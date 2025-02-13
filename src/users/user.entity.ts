@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Crops } from "src/crops/crops.entity";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 @Entity()
 export class Users {
@@ -19,4 +20,7 @@ export class Users {
 
     @Column()
     photo_url: string;
+
+    @OneToMany(()=>Crops, (crops)=>crops.users)
+    crops: Crops[];
 }
